@@ -139,6 +139,11 @@ const calcDisplaySummary = function (acc) {
     .map(deposit => (deposit * acc.interestRate) / 100)
     .filter(interest => interest >= 1)
     .reduce((acc, interest) => acc + interest, 0);
+  labelSumInterest.textContent = formatCurreny(
+    interest,
+    acc.locale,
+    acc.currency
+  );
 };
 
 const createUserNames = function (accs) {
