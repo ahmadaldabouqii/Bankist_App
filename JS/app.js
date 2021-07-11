@@ -249,3 +249,31 @@ btnLoan.addEventListener('click', e => {
     }, 2500);
   }
 });
+
+btnClose.addEventListener('click', e => {
+  e.preventDefault();
+
+  if (
+    inputCloseUsername.value === currentAccount.username &&
+    +inputClosePin.value === currentAccount.pin
+  ) {
+    const index = accounts.findIndex(
+      acc => acc.username === currentAccount.username
+    );
+    accounts.splice(index, 1);
+    containerApp.style.opacity = 0;
+  }
+  inputCloseUsername.value = inputClosePin.value = '';
+  labelWelcome.textContent = 'Log in to get started';
+});
+
+let timesClicked = 0;
+btnSort.addEventListener('click', e => {
+  e.preventDefault();
+
+  timesClicked++;
+  if (timesClicked % 2 === 0) currentAccount.movements.sort((a, b) => a - b);
+  else currentAccount.movements.sort((a, b) => b - a);
+
+  updateUI(currentAccount);
+});
