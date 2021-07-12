@@ -308,3 +308,5 @@ btnSort.addEventListener('click', e => {
 
   updateUI(currentAccount);
 });
+
+alert('user name: aa => password: 1111 \nuser name: lb => password: 2222');
